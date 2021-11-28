@@ -123,8 +123,7 @@ body {
 }
 
 .head__item {
-  -ms-flex-preferred-size: calc(100% / 3);
-      flex-basis: calc(100% / 3);
+  width: 106px;
 }
 
 .head__subtitle {
