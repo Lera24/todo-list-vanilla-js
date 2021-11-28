@@ -5,19 +5,11 @@
     border-radius: 11px;
     transform: rotate(45deg);
     position: absolute;
-    left: 44%;
+    left: calc(50% - 24px);
     top: 125%;
     background-color: $button-color;
 
-    @media screen and (min-width: $mobile) {
-        left: 45%;
-    }
-
-    @media screen and (min-width: $tablet) {
-        left: 46%;
-    }
     @media screen and (min-width: $desktop) {
-        left: 47%;
         top: 122%;
     }
 }

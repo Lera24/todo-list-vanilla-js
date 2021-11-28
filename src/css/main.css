@@ -123,8 +123,8 @@ body {
 }
 
 .head__item {
-  -ms-flex-preferred-size: 100% / 3;
-      flex-basis: 100% / 3;
+  -ms-flex-preferred-size: calc(100% / 3);
+      flex-basis: calc(100% / 3);
 }
 
 .head__subtitle {
@@ -350,26 +350,13 @@ body {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   position: absolute;
-  left: 44%;
+  left: calc(50% - 24px);
   top: 125%;
   background-color: #88eaa9;
 }
 
-@media screen and (min-width: 480px) {
-  .head__button {
-    left: 45%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .head__button {
-    left: 46%;
-  }
-}
-
 @media screen and (min-width: 1200px) {
   .head__button {
-    left: 47%;
     top: 122%;
   }
 }
