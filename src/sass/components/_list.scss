@@ -1,0 +1,147 @@
+.todo__list {
+    margin-bottom: 26px;
+}
+
+.todo__item {
+    display: flex;
+    justify-content:space-between;
+    align-items: baseline;
+    padding-top: 19px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid $grey-color;
+}
+
+.todo__item:hover, 
+.todo__item:focus {
+    border-bottom-color: $accent-color;
+    transition: border-bottom-color $time $function;
+} 
+
+.todo__wrap {
+    display: flex;
+    align-items: flex-start;
+    flex-grow: 2;
+}
+
+.todo__wrap--desc {
+    flex-grow: 2;
+}
+
+.todo__date {
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 4px;
+    color: $accent-color;
+} 
+
+.todo__desc {
+    display: block;
+    border: 0;
+    font-size: 14px;
+    line-height: 22px;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+    width: 100%;
+    color: $main-color;
+}
+
+.todo__desc--completed {
+    text-decoration:line-through;
+    color: $grey-color;
+}
+
+.todo__label {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
+
+.todo__tick {
+    display: inline-block;
+    border: 1px solid $accent-color;
+    box-sizing: border-box;
+    border-radius: 2px;
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+
+    .todo__checkbox:checked + & {
+        background-image: url('../img/checkbox-active.svg');
+        background-size: contain;
+        background-origin: border-box;
+        border-color: $accent-color;
+        background-color: $accent-color;
+        color: $accent-color;
+        transition: background-image $time $function;
+    }
+}
+
+.todo__tick:hover {
+    cursor: pointer;
+}
+
+.todo__button {
+    border: none;
+    background-color: inherit;
+}
+
+.todo__button--delete:hover .todo__icon--delete,
+.todo__button--delete:focus .todo__icon--delete {
+        background-image: url('../img/delete-button-active.svg');
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+        background-size: contain;
+        background-origin: border-box;
+        transition: background-image $time $function;
+}
+
+.todo__button--edit:hover .todo__icon--edit,
+.todo__button--edit:focus .todo__icon--edit {
+    background-image: url('../img/edit-button-active.svg');
+    transition: background-image $time $function;
+}
+
+.todo__button--edit:hover .todo__icon--save,
+.todo__button--edit:focus .todo__icon--save {
+    background-image: url('../img/save-button-active.svg');
+    transition: background-image $time $function;
+}
+
+.todo__icon {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    background-size: contain;
+    background-origin: border-box;
+    background-color: $white-color;
+}
+
+.todo__icon--save {
+    background-image: url('../img/save-button-inactive.svg');
+}
+
+.todo__icon--edit {
+    background-image: url('../img/edit-button-inactive.svg');
+}
+
+.todo__icon--delete {
+    display: inline-block;
+    background-image: url('../img/delete-button-inactive.svg');
+    background-size: contain;
+    background-origin: border-box;
+    width: 24px;
+    height: 24px;
+}
+
+.todo__tick--completed {
+    text-decoration: overline;
+    color: $grey-color;
+}
+
+.button__wrap {
+    @media screen and (min-width: $tablet) {
+        margin-right: 26px;
+    }
+}

@@ -1,0 +1,51 @@
+.head__button {
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 11px;
+    transform: rotate(45deg);
+    position: absolute;
+    left: 44%;
+    top: 125%;
+    background-color: $button-color;
+
+    @media screen and (min-width: $mobile) {
+        left: 45%;
+    }
+
+    @media screen and (min-width: $tablet) {
+        left: 46%;
+    }
+    @media screen and (min-width: $desktop) {
+        left: 47%;
+        top: 122%;
+    }
+}
+
+.head__icon {
+    display: block;
+    width: 36px; 
+    height: 36px;
+    transform: rotate(45deg);
+    align-items: center;
+}
+
+.foot__button {
+    display: flex;
+    padding: 12px 22px;
+    margin: 0 auto;
+    margin-top: 26px;
+    align-items: center;
+    margin-bottom: 40px;
+    border: none;
+    border-radius: 11px;
+    background-color: $button-color;
+    color: $white-color;
+}
+
+.foot__icon {
+    width: 24px; 
+    height: 24px;
+    margin-right: 8px;
+}
+
