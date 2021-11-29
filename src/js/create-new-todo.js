@@ -1,7 +1,7 @@
+import Notiflix from "notiflix";
 import { createTodo } from './api';
 import { handleTodos } from './handle-todo';
-import {loader} from './loader';
-import Notiflix from "notiflix";
+import { loader } from './loader';
 import { addTodoButtonFoot, addTodoButtonHead } from '..';
 import { HIGH_ERROR_MESSAGE } from "..";
 

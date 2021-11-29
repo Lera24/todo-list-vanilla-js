@@ -1,15 +1,16 @@
 import Notiflix from "notiflix";
-import murkupTodo from './murkup-todo';
+import autosize from 'autosize';
+import { murkupTodo } from './murkup-todo';
 import { fetchTodos } from "./api";
-import {parseGetDate} from './get-date';
-import {countTodo} from './count-todo';
-import {updateResultTodo} from './update-head';
-import { WARN_MESSAGE, INFO_MESSAGE, HIGH_ERROR_MESSAGE } from "..";
+import { parseGetDate } from './get-date';
+import { countTodo } from './count-todo';
+import { updateResultTodo } from './update-head';
+import { INFO_MESSAGE, HIGH_ERROR_MESSAGE } from "..";
 import { addTodoButtonFoot, addTodoButtonHead } from "..";
 
 export const handleTodos = (todos, list, amount) => {
     const loader = list.parentNode.querySelector('.lds-roller');
-
+    
     fetchTodos().then(data => {
         todos.length = 0;
         todos.push(...data);
@@ -21,6 +22,8 @@ export const handleTodos = (todos, list, amount) => {
         const murkupAllTodos = sortTodos.map(todo => murkupTodo(todo.id, todo.text, parseGetDate(todo.date), todo.completed, 'readonly')).join(' ');
         if(loader) {loader.remove()};
         list.innerHTML = murkupAllTodos;
+        const arrayTextaria = document.querySelectorAll('.todo__desc');
+        autosize(arrayTextaria);
 
         if(todos.length === 0) {
             list.insertAdjacentHTML('afterend', '<h3 class="message">Not found todo...</h3>');
@@ -35,12 +38,10 @@ export const handleTodos = (todos, list, amount) => {
             list.parentNode.removeChild(warnMessage);
         }
 
-        if(addTodoButtonHead.classList.contains('visually-hidden') || addTodoButtonFoot.classList.contains('visually-hidden') ) {
+        if(addTodoButtonHead.classList.contains('visually-hidden')) {
             addTodoButtonHead.classList.remove('visually-hidden');
             addTodoButtonFoot.classList.remove('visually-hidden');
         }
-        
-        Notiflix.Notify.warning(WARN_MESSAGE);
     }).catch(error => {
         const sortArray = JSON.parse(localStorage.getItem('todos'));
         const murkupAllTodos = sortArray.map(todo => murkupTodo(todo.id, todo.text, parseGetDate(todo.date), todo.completed, 'readonly')).join(' ');

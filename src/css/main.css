@@ -231,9 +231,9 @@ body {
   line-height: 22px;
   resize: none;
   outline: none;
-  overflow: hidden;
   width: 100%;
   color: #3F3F3F;
+  height: auto;
 }
 
 .todo__desc--completed {
@@ -346,17 +346,17 @@ body {
   width: 48px;
   height: 48px;
   border-radius: 11px;
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
   position: absolute;
-  left: calc(50% - 24px);
-  top: 125%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+          transform: translate(-50%, -50%) rotate(45deg);
+  top: 216px;
   background-color: #88eaa9;
 }
 
 @media screen and (min-width: 1200px) {
   .head__button {
-    top: 122%;
+    top: 250px;
   }
 }
 

@@ -1,9 +1,8 @@
 import Notiflix from "notiflix";
 import { deleteTodo } from "./api";
 import { handleTodos } from "./handle-todo";
-import { HIGH_ERROR_MESSAGE } from "..";
+import { HIGH_ERROR_MESSAGE, INFO_MESSAGE } from "..";
 import { loader } from "./loader";
-import { INFO_MESSAGE } from "..";
 import { addTodoButtonFoot, addTodoButtonHead } from "..";
 
 const deleteSelectTodo = (item, parentItem, todos, list, amount) => {
@@ -26,7 +25,6 @@ const deleteSelectTodo = (item, parentItem, todos, list, amount) => {
                 addTodoButtonHead.classList.remove('visually-hidden');
                 addTodoButtonFoot.classList.remove('visually-hidden');
                 Notiflix.Notify.info(INFO_MESSAGE);
-                return;
             }
         }
     }

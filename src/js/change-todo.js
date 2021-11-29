@@ -8,6 +8,7 @@ import { addTodoButtonFoot, addTodoButtonHead } from "..";
 const changeTodo = (item, parentItem, todos, list, newtext, amount) => {
     const textTodo = parentItem.querySelector('.todo__desc');
     const checkboxTodo = parentItem.querySelector('.todo__checkbox');
+    const todoTick = parentItem.querySelector('.todo__icon--save');
 
     const currentId = parentItem.dataset.id;
     const saveId = newtext.id;
@@ -22,7 +23,7 @@ const changeTodo = (item, parentItem, todos, list, newtext, amount) => {
         checkboxTodo.removeAttribute('checked');
         
     } else if(resultId) {
-        if(item.classList.contains('todo__tick')) {
+        if(item.classList.contains('todo__tick') && !todoTick) {
             list.innerHTML = loader();
             addTodoButtonHead.classList.add('visually-hidden');
             addTodoButtonFoot.classList.add('visually-hidden');
@@ -33,8 +34,7 @@ const changeTodo = (item, parentItem, todos, list, newtext, amount) => {
                 list.removeChild(list.firstElementChild);
                 Notiflix.Notify.failure(HIGH_ERROR_MESSAGE);
             });
-     }  
-        if(item.classList.contains('todo__icon--save') && newtext.value) {
+     } else if(item.classList.contains('todo__icon--save') && newtext.value) {
             list.innerHTML = loader();
             addTodoButtonHead.classList.add('visually-hidden');
             addTodoButtonFoot.classList.add('visually-hidden');
@@ -47,7 +47,7 @@ const changeTodo = (item, parentItem, todos, list, newtext, amount) => {
                 list.removeChild(list.firstElementChild);
                 Notiflix.Notify.failure(HIGH_ERROR_MESSAGE);
             });
-     }
+     } 
     } 
 }
 

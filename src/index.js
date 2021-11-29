@@ -1,4 +1,5 @@
-import murkupTodo from './js/murkup-todo';
+import autosize from 'autosize';
+import { murkupTodo } from './js/murkup-todo';
 import { changeTodo } from './js/change-todo';
 import { deleteSelectTodo } from './js/delete-todo';
 import { createNewTodo } from './js/create-new-todo';
@@ -13,25 +14,27 @@ export const addTodoButtonFoot = document.querySelector(".foot__button");
 const listTodos = document.querySelector('.todo__list');
 
 export const INFO_MESSAGE = 'Please add your first todo';
-export const WARN_MESSAGE = 'Successful download. If you want to see the full text, click on it';
-export const ERROR_MESSAGE = 'Please save or delete changes';
 export const HIGH_ERROR_MESSAGE = 'Have problems. Please, try again later';
 
 let allTodos = [];
 let summTodos = [];
 let currentText = '';
+
 const changeTodoText = JSON.parse(localStorage.getItem('todo'));
 const saveTodos = JSON.parse(localStorage.getItem('todos'));
 
-
 if(changeTodoText) {
     if(changeTodoText.value) {
-      addTemplateTodo(listTodos, changeTodoText.value)
+      addTemplateTodo(listTodos, changeTodoText.value);
+      const arrayTextaria = document.querySelectorAll('.todo__desc');
+      autosize(arrayTextaria);
     };
 
     const selectTodo = saveTodos.filter(item => item.id !== changeTodoText.id);
     const murkupSaveTodos = selectTodo.map(todo => murkupTodo(todo.id, todo.text, parseGetDate(todo.date), todo.completed, 'readonly')).join(' ');
     listTodos.insertAdjacentHTML("beforeend", murkupSaveTodos);
+    const arrayTextaria = document.querySelectorAll('.todo__desc');
+    autosize(arrayTextaria);
     
     if(saveTodos) {
       const calcAmountTodos = countTodo(saveTodos);
@@ -43,6 +46,8 @@ if(changeTodoText) {
     }
 
 } else {
+  addTodoButtonHead.classList.add('visually-hidden');
+  addTodoButtonFoot.classList.add('visually-hidden');
   handleTodos(allTodos, listTodos, summTodos)
 };
 
@@ -65,10 +70,6 @@ const mainCallBack = (e) => {
       createNewTodo(currentElem, currentParentElem, allTodos, listTodos, currentText, summTodos);
       deleteSelectTodo(currentElem, currentParentElem, allTodos, listTodos, summTodos);
     }
-
-    if(currentElem.classList.contains('todo__desc')) {
-      currentElem.style.height = e.target.scrollHeight + "px"
-   }
 }
 
 listTodos.addEventListener('click', mainCallBack);
@@ -81,15 +82,12 @@ const handleInputValue = (e) => {
     const idSelectElem = currentParentItem.dataset.id;
 
     localStorage.setItem('todo', JSON.stringify({id: idSelectElem ? idSelectElem : '', value: currentElem.value}));
-
-    if(currentElem.scrollTop > 0) {
-      currentElem.style.height = currentElem.scrollHeight + "px"
-     }
+    const arrayTextaria = document.querySelectorAll('.todo__desc');
+    autosize(arrayTextaria);
   }
 }
 
 listTodos.addEventListener('input', handleInputValue);
-
 
 const createTemplateTodo = () => {
     addTemplateTodo(listTodos);

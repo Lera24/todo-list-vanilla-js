@@ -7,8 +7,8 @@ const murkupTodo = (id, text, date, state, access) => {
         </label>
         <div class="todo__wrap--desc">
             <span class="todo__date">${date}</span>
-            <div>
-                <textarea type="text" class="todo__desc ${state ? "todo__desc--completed" : ''}" ${access ? access : ''} rows="1">${text ? text : ''}</textarea>
+            <div class="todo__box">
+            <textarea type="text" class="todo__desc ${state ? "todo__desc--completed" : ''}" ${access ? access : ''} rows='1'>${text ? text : ''}</textarea>
             </div>
         </div>
     </div>
@@ -23,4 +23,4 @@ const murkupTodo = (id, text, date, state, access) => {
     </li>`
 }
 
-export default murkupTodo
+export {murkupTodo}
