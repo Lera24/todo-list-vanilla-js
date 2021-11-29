@@ -79,19 +79,22 @@ body {
   clip: rect(0 0 0 0);
 }
 
+.head {
+  height: 216px;
+}
+
+@media screen and (min-width: 1200px) {
+  .head {
+    height: 250px;
+  }
+}
+
 .head__wrap {
   width: 100%;
-  height: 216px;
   margin-bottom: 91px;
   text-align: center;
   background-color: #889dea;
   color: white;
-}
-
-@media screen and (min-width: 1200px) {
-  .head__wrap {
-    height: 250px;
-  }
 }
 
 .head__title {
