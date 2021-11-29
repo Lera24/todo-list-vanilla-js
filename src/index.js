@@ -20,7 +20,6 @@ let allTodos = [];
 let summTodos = [];
 let currentText = '';
 
-
 const changeTodoText = JSON.parse(localStorage.getItem('todo'));
 const saveTodos = JSON.parse(localStorage.getItem('todos'));
 
